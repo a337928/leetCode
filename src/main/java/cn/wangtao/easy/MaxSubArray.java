@@ -7,6 +7,7 @@ public class MaxSubArray {
 		for (int x : nums) {
 			pre = Math.max(pre + x, x);
 			maxAns = Math.max(maxAns, pre);
+			System.out.println("x:" + x + " pre:" + pre + " maxAns: " + maxAns);
 		}
 		return maxAns;
 	}
