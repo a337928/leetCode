@@ -5,7 +5,6 @@ import java.util.Set;
 
 public class HasCycle {
 
-	private Set<ListNode> hasNode = new HashSet();
 
 
 	public boolean hasCycle(ListNode head) {
@@ -13,14 +12,22 @@ public class HasCycle {
 			return Boolean.FALSE;
 		}
 
+		ListNode fast = head;
+		ListNode slow = head;
 
-		if (hasNode.contains(head.next)) {
-			return Boolean.TRUE;
+		while (fast != null){
+			fast = fast.next;
+			if (fast == null){
+				return Boolean.FALSE;
+			}
+			fast = fast.next;
+			slow = slow.next;
+			if (slow == fast){
+				return Boolean.TRUE;
+			}
 		}
 
-		hasNode.add(head);
-
-		return hasCycle(head.next);
+		return Boolean.FALSE;
 	}
 
 
